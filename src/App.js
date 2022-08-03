@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import "./App.css";
 import app from "./firebase.init";
 import Form from 'react-bootstrap/Form';
@@ -72,6 +72,10 @@ function App() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [resistered, setResistered] = useState(false);
+  const [validated, setValidated] = useState(false);
+  
 
   const handleEmailBlur = (e) => {
     setEmail(e.target.value);
@@ -79,19 +83,39 @@ function App() {
   const handlePassBlur = (e) => {
     setPassword(e.target.value);
   }
+  const handleResisteredChange = (e) => {
+    setResistered(e.target.checked);
+  }
   const handleFormSubmit = (e) => {
-    createUserWithEmailAndPassword(auth, email, password) 
+    
+    
+    if(resistered) {
+      signInWithEmailAndPassword(auth, email, password)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch(error => {
+        console.error(error);
+        setError(error.massage)
+      })
+    }
+    else(
+      createUserWithEmailAndPassword(auth, email, password) 
     .then( result => {
       const user = result.user;
       console.log(user)
+      setEmail('')
+      setPassword('')
     })
     .catch(error => {
       console.error(error);
+      setError(error.massage)
     })
-    // console.log('Form submitted Sucessful', email, password)
+    )
     e.preventDefault();
   }
-  const [validated, setValidated] = useState(false);
+  
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -108,7 +132,7 @@ function App() {
       <Container>
       <Row>
         <Col>
-        <h6>Resister Form</h6>
+        <h6>{ resistered ? 'Login' : 'Resister'} Form</h6>
         <Form onSubmit={handleFormSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
@@ -120,10 +144,13 @@ function App() {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control onBlur={handlePassBlur} type="password" placeholder="Password" />
+        <Form.Control onBlur={handlePassBlur} type="password" placeholder="Password" required />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check onChange={handleResisteredChange} type="checkbox" label="Already Resistered!" />
       </Form.Group>
       <Button variant="primary" type="submit">
-        Login
+        {resistered ? 'Login' : 'Resistered'}
       </Button>
     </Form>
         </Col>
