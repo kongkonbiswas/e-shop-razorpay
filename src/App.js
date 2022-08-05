@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import "./App.css";
 import app from "./firebase.init";
 import Form from 'react-bootstrap/Form';
@@ -209,7 +209,7 @@ function App() {
         </Col>
         <Col>
         <h6>Shipping Information</h6>
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+        <Form noValidate validated={validated}>
       <Row className="mb-3">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label>First name</Form.Label>
