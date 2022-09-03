@@ -8,14 +8,10 @@ Have a look the live preview [Click here to Check Live Site](https://e-shop-razo
 
 ## Features
 React.js
-Heroku,
-MongoDb,
 JavaScript ,
 HTML,
 CSS,
 Firebase,
-Google Maps,
-Alan AI
 and so on
 
 ---Thank You---
