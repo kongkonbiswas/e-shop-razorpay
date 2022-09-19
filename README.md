@@ -6,6 +6,9 @@ Have a look the live preview [Click here to Check Live Site](https://e-shop-razo
 
 [E-mail](kongkonbiswas3241@gmail.com).
 
+## About This Project
+this i s a firebase connection project. Here I just try to connect firebase properly.
+
 ## Features
 React.js
 JavaScript ,
