@@ -12,6 +12,9 @@ This is a firebase connection project. Here I try to connect firebase properly.
 
 - Responsive Design
 - JavaScript, React, HTML, CSS
+- Razorpay payment methods
+- Bootstrap, Font Awesome Icons
+- Firebase Sign-in Support
 - Customizable
 
 
@@ -31,7 +34,7 @@ If you have any feedback, please reach out to me at kongkonbiswas3241@gmail.com
 
 ## License
 
-[MIT License](LICENSE)
+[GNU General Public License v3.0](LICENSE)
 
 
 

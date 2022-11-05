@@ -167,8 +167,8 @@ function App() {
     <div className="App">
       <Container>
       <Row>
+      <h2 className="text-primary">Please {registered ? 'Login' : 'Register'}!!</h2>
         <Col>
-        <h2 className="text-primary">Please {registered ? 'Login' : 'Register'}!!</h2>
         <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
           { !registered && <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Your Name</Form.Label>
